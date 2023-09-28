@@ -1,22 +1,24 @@
 <template>
-    <div id="app">
-      <Navbar/>
-        <router-view/>
-    </div>
+    <v-app>
+      <navbar v-if="showNavbar"></navbar>
+      <v-main>
+        <router-view></router-view>
+      </v-main>
+    </v-app>
   </template>
   
   <script>
-  import Navbar from './components/Navbar.vue'; 
+  import Navbar from "./components/Navbar.vue";
   
   export default {
-    name: 'App',
     components: {
-      Navbar
-    }
-  }
+      Navbar,
+    },
+    computed: {
+      showNavbar() {
+        return this.$route.path !== "/login" && this.$route.path !== "/register";
+      },
+    },
+  };
   </script>
-  
-  <style>
-  /* Aquí puedes poner los estilos globales de tu aplicación */
-  </style>
   
