@@ -10,6 +10,9 @@ export class Usuario {
   nombre: string;
 
   @Column()
+  apellido: string;
+
+  @Column()
   email: string;
 
   @Column()

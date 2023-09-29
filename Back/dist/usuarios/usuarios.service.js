@@ -21,17 +21,47 @@ let UsuariosService = class UsuariosService {
     constructor(usuariosRepository) {
         this.usuariosRepository = usuariosRepository;
     }
-    findAll() {
-        return this.usuariosRepository.find();
+    async findAll() {
+        try {
+            return await this.usuariosRepository.find();
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al obtener los usuarios');
+        }
     }
-    findOne(id) {
-        return this.usuariosRepository.findOne({ where: { id } });
-    }
-    create(usuario) {
-        return this.usuariosRepository.save(usuario);
+    async findOne(options) {
+        try {
+            const usuario = await this.usuariosRepository.findOne(options);
+            if (!usuario)
+                throw new common_1.NotFoundException('Usuario no encontrado');
+            return usuario;
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al obtener el usuario');
+        }
     }
     async remove(id) {
-        await this.usuariosRepository.delete(id);
+        try {
+            const result = await this.usuariosRepository.delete(id);
+            if (result.affected === 0)
+                throw new common_1.NotFoundException('Usuario no encontrado');
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al eliminar el usuario');
+        }
+    }
+    async create(usuarioDto) {
+        try {
+            const usuario = new usuario_entity_1.Usuario();
+            usuario.nombre = usuarioDto.nombre;
+            usuario.apellido = usuarioDto.apellido;
+            usuario.email = usuarioDto.email;
+            usuario.password = usuarioDto.password;
+            return await this.usuariosRepository.save(usuario);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al crear el usuario: ' + error.message);
+        }
     }
 };
 exports.UsuariosService = UsuariosService;

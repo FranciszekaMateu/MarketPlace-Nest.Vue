@@ -15,22 +15,45 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsuariosController = void 0;
 const common_1 = require("@nestjs/common");
 const usuarios_service_1 = require("./usuarios.service");
-const usuario_entity_1 = require("./usuario.entity");
+const create_usuario_dto_1 = require("./create-usuario.dto");
 let UsuariosController = class UsuariosController {
     constructor(usuariosService) {
         this.usuariosService = usuariosService;
     }
-    findAll() {
-        return this.usuariosService.findAll();
+    async findAll() {
+        try {
+            return await this.usuariosService.findAll();
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al obtener los usuarios');
+        }
     }
-    findOne(id) {
-        return this.usuariosService.findOne(id);
+    async findOne(id) {
+        try {
+            const usuario = await this.usuariosService.findOne({ where: { id: id } });
+            if (!usuario)
+                throw new common_1.NotFoundException('Usuario no encontrado');
+            return usuario;
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al obtener el usuario' + error.message);
+        }
     }
-    create(usuario) {
-        return this.usuariosService.create(usuario);
+    async create(usuarioDto) {
+        try {
+            return await this.usuariosService.create(usuarioDto);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al crear el usuario' + error.message);
+        }
     }
-    remove(id) {
-        return this.usuariosService.remove(id);
+    async remove(id) {
+        try {
+            await this.usuariosService.remove(id);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException('Error al eliminar el usuario');
+        }
     }
 };
 exports.UsuariosController = UsuariosController;
@@ -51,7 +74,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [usuario_entity_1.Usuario]),
+    __metadata("design:paramtypes", [create_usuario_dto_1.CreateUsuarioDto]),
     __metadata("design:returntype", Promise)
 ], UsuariosController.prototype, "create", null);
 __decorate([
