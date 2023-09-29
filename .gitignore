@@ -1,1 +1,4 @@
-Back/src/env.js
+Back/env.js
+Back/node_modules
+Front/node_modules
+```
