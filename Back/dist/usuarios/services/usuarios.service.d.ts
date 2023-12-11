@@ -1,6 +1,6 @@
 import { FindOneOptions, Repository } from 'typeorm';
-import { Usuario } from './usuario.entity';
-import { CreateUsuarioDto } from './create-usuario.dto';
+import { Usuario } from '../usuario.entity';
+import { CreateUsuarioDto } from '../create-usuario.dto';
 export declare class UsuariosService {
     private usuariosRepository;
     constructor(usuariosRepository: Repository<Usuario>);

@@ -1,6 +1,6 @@
-import { UsuariosService } from './usuarios.service';
-import { Usuario } from './usuario.entity';
-import { CreateUsuarioDto } from './create-usuario.dto';
+import { UsuariosService } from '../services/usuarios.service';
+import { Usuario } from '../usuario.entity';
+import { CreateUsuarioDto } from '../create-usuario.dto';
 export declare class UsuariosController {
     private readonly usuariosService;
     constructor(usuariosService: UsuariosService);
