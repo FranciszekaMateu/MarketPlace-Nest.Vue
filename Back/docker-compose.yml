@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+   marketplace:
+    image: postgres:15.1
+    container_name: marketplace_pg
+    restart: always
+    environment:
+      POSTGRES_USER: marketplace
+      POSTGRES_PASSWORD: marketplacepass
+      POSTGRES_DB: marketplace_DB
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432

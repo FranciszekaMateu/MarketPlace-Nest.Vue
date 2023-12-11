@@ -1,8 +1,7 @@
 // src/app.module.ts
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { UsuariosModule } from './usuarios/usuarios.module';
-import { ProductosModule } from './productos/productos.module';
+import { UsuariosModule } from './users/users.module';
 
 @Module({
   imports: [
