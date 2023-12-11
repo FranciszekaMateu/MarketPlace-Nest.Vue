@@ -9,7 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const typeorm_1 = require("@nestjs/typeorm");
 const usuarios_module_1 = require("./usuarios/usuarios.module");
 const productos_module_1 = require("./productos/productos.module");
 let AppModule = class AppModule {
@@ -18,20 +17,9 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot(),
-            typeorm_1.TypeOrmModule.forRootAsync({
-                imports: [config_1.ConfigModule],
-                useFactory: (configService) => ({
-                    type: 'postgres',
-                    host: configService.get('DB_HOST'),
-                    port: +configService.get('DB_PORT'),
-                    username: configService.get('DB_USERNAME'),
-                    password: configService.get('DB_PASSWORD'),
-                    database: configService.get('DB_DATABASE'),
-                    entities: [__dirname + '/**/*.entity{.ts,.js}'],
-                    synchronize: true,
-                }),
-                inject: [config_1.ConfigService],
+            config_1.ConfigModule.forRoot({
+                envFilePath: '.${process.env.NODE_ENV}.env',
+                isGlobal: true,
             }),
             usuarios_module_1.UsuariosModule,
             productos_module_1.ProductosModule,
