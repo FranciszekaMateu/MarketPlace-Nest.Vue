@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const usuarios_module_1 = require("./usuarios/usuarios.module");
+const productos_module_1 = require("./productos/productos.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -33,6 +34,7 @@ exports.AppModule = AppModule = __decorate([
                 inject: [config_1.ConfigService],
             }),
             usuarios_module_1.UsuariosModule,
+            productos_module_1.ProductosModule,
         ],
     })
 ], AppModule);

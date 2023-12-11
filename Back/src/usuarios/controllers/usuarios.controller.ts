@@ -8,9 +8,9 @@ import {
   BadRequestException,
   NotFoundException,
 } from '@nestjs/common';
-import { UsuariosService } from './usuarios.service';
-import { Usuario } from './usuario.entity';
-import { CreateUsuarioDto } from './create-usuario.dto'; // Asegúrate de crear este archivo con la clase y validaciones correspondientes.
+import { UsuariosService } from '../services/usuarios.service';
+import { Usuario } from '../usuario.entity';
+import { CreateUsuarioDto } from '../create-usuario.dto'; // Asegúrate de crear este archivo con la clase y validaciones correspondientes.
 
 @Controller('usuarios')
 export class UsuariosController {

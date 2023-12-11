@@ -5,8 +5,8 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOneOptions, Repository } from 'typeorm';
-import { Usuario } from './usuario.entity';
-import { CreateUsuarioDto } from './create-usuario.dto'; // 1. Importar CreateUsuarioDto
+import { Usuario } from '../usuario.entity';
+import { CreateUsuarioDto } from '../create-usuario.dto'; // 1. Importar CreateUsuarioDto
 
 @Injectable()
 export class UsuariosService {

@@ -15,6 +15,6 @@ export class CreateUsuarioDto {
 
   @IsNotEmpty()
   @IsString()
-  @MinLength(8) // Asegúrate de que la contraseña tenga al menos 8 caracteres
+  @MinLength(8) // La contraseña debe tener al menos 8 caracteres
   password: string;
 }
