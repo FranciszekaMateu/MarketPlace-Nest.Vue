@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSourceConfig } from '../config/data.source';
 import { UsersModule } from './users/users.module';
-import { ProductsService } from './products/products.service';
+import { ProductsService } from './products/services/products.service';
 import { ProductsController } from './products/controllers/products.controller';
 import { ProductsModule } from './products/products.module';
 @Module({
