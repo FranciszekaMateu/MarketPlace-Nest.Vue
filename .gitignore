@@ -1,4 +1,5 @@
-Back/.env
+Back/.develop.env
 Back/node_modules/
 Front/node_modules/
 ```
+node_modules
