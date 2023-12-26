@@ -5,9 +5,6 @@ import { ROLES } from '../../constants/roles';
 @Entity({ name: 'users' })
 export abstract class UserEntity extends BaseEntity implements IUser {
   @Column()
-  id: number;
-
-  @Column()
   firstName: string;
 
   @Column({ unique: true })
