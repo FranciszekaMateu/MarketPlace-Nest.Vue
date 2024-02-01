@@ -1,7 +1,7 @@
-import { BaseEntity, Column, Entity } from 'typeorm';
+import {  Column, Entity } from 'typeorm';
 import { IUser } from '../../interfaces/user.interface';
 import { ROLES } from '../../constants/roles';
-
+import { BaseEntity } from '../../config/base.entity';
 @Entity({ name: 'users' })
 export abstract class UserEntity extends BaseEntity implements IUser {
   @Column()

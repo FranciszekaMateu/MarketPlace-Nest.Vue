@@ -9,11 +9,12 @@ export class UsersService {
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
   ) {}
-  public async  findAll(body : UserDto): Promise<UserEntity[]> {
+
+  public async findAll(): Promise<UserEntity[]> {
     try {
-      return await this.userRepository.save(body);
-    }
-    catch (error) {
+      return await this.userRepository.find();
+    } catch (error) {
       throw new Error(error);
     }
+  }
 }

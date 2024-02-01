@@ -14,10 +14,16 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
+    "type": "common-js",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "orm:init": "npx typeorm-ts-node-commonjs -d ./src/config/data.source.ts",
+    "m:gen:dev": "export NODE_ENV=develop && npm run orm:init migration:generate",
+    "m:run:dev": "export NODE_ENV=develop && npm run orm:init migration:run",
+    "m:gen": "export NODE_ENV=develop && npm run orm:init migration:generate",
+    "m:run": "export NODE_ENV=develop && npm run orm:init migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^10.2.6",
